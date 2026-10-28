@@ -25,3 +25,14 @@
 - LICENSE（MIT）追加、README 更新、git init + 初回コミット
 - 残り: Publish 画面で ID 発行 → manifest の id 置換、カルーセル 3 枚（実機スクショ）、フォーム入力
 - 2026-10-23: 英語圏向けに改名（Tategaki Flow → Vertical Japanese Text — Auto Reflow）。UI・README・PUBLISHING・assets を更新。cover.png は再生成が必要
+
+## 2026-10-28 公開準備の状況
+- GitHub: https://github.com/iori73/vertical-japanese-text （履歴なしの新規リポジトリ）
+- PUBLISHING.md を、日英交互の 1 欄・リリースノート・カルーセル撮影手順つきに更新
+- 残り（河野さん）: Publish 画面で ID 発行 → manifest の id 置換、カルーセル 3 枚の実機撮影、サポート連絡先の決定
+
+## 2026-10-28 Figma Community に公開
+- 公開ページ: https://www.figma.com/community/plugin/1697276030514744426
+- 名前: Vertical Japanese Text／プラグイン ID: 1697276030514744426／作者: Individual creator (lori_k)
+- 申請時の回答: バックエンドなし・ネットワークなし・認証なし・pluginData に保存あり・ソロ開発
+- 残り: プルリクエスト #1 の main への取り込み、旧フォルダ（~/dev/figma-plugin/tategaki-flow）の整理、公開ページの表示確認（検索結果での見え方）

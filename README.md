@@ -1,5 +1,7 @@
 # Vertical Japanese Text — Auto Reflow（縦書き自動折り返し）
 
+[Figma Community で入手 / Get it on Figma Community](https://www.figma.com/community/plugin/1697276030514744426)
+
 縦書きブロックの高さを動かすだけで、列が自動で折り返され、親の幅が伸び縮みします。横書きの Auto Layout wrap を、縦書きに持ち込むプラグインです。<br>
 Drag the height of a vertical block and its columns reflow while the width hugs the result: a wrap-like behavior for Japanese vertical text.
 
@@ -19,8 +21,8 @@ Figma has no vertical writing. You can fake it with a horizontal auto-layout fra
 
 - プラグインが**開いている間だけ**動きます（Figma の仕様）。閉じると、ただの普通のレイヤーとして残ります。<br>
   It only works **while the plugin is open** (a Figma limitation). When closed, the block stays as ordinary layers.
-- 列は右から左に読むため、レイヤーパネルの順序は逆です（列 1 = 最後の子）。Auto Layout に右から左がないためです。<br>
-  Columns read right to left, so the layer order is reversed (column 1 = last child), because auto layout has no right-to-left mode.
+- 列は右から左に読みますが、Auto Layout には右から左がないため、列は右端から順に、レイヤーパネルの上から並びます（1 列目 = 右端 = 一番上のレイヤー）。<br>
+  Columns read right to left, but auto layout has no right-to-left mode, so the Layers panel lists them from the top in reading order (the first column is the rightmost one, at the top of the list).
 - 縦書き字形は、OpenType の `vert` を API から設定できないため、Unicode の縦書き用文字（︑︒﹁﹂︱ など）への置換で出します。回転セルに切り替えると、フォントに依存しません。<br>
   The OpenType `vert` feature cannot be set through the API, so vertical forms come from Unicode vertical-form characters (︑︒﹁﹂︱ and so on). The rotated-cell mode is font-independent.
 - 数字・英字の縦中横・横向きは、テキストの一部だけ回転できないため、別ノード（セル）になります。<br>
@@ -49,6 +51,17 @@ npm run watch
 
 Figma デスクトップで、Plugins → Development → Import plugin from manifest… から `manifest.json` を読み込みます。<br>
 In the Figma desktop app: Plugins → Development → Import plugin from manifest… and pick `manifest.json`.
+
+### 別のマシンで再現する / Reproduce on another machine
+
+```sh
+git clone https://github.com/iori73/vertical-japanese-text.git
+cd vertical-japanese-text
+npm install
+npm run build        # code.js と ui.html は gitignore なので、毎回ここで生成する
+```
+その後、上の手順で `manifest.json` を Figma に読み込みます。`manifest.json` の `id` は公開済みのプラグインの ID なので、書き換えないでください。<br>
+Then import `manifest.json` as above. The `id` in `manifest.json` is the published plugin's ID; leave it as is.
 
 ### 構成 / Layout
 
