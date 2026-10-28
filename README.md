@@ -19,8 +19,8 @@ Figma has no vertical writing. You can fake it with a horizontal auto-layout fra
 
 - プラグインが**開いている間だけ**動きます（Figma の仕様）。閉じると、ただの普通のレイヤーとして残ります。<br>
   It only works **while the plugin is open** (a Figma limitation). When closed, the block stays as ordinary layers.
-- 列は右から左に読むため、レイヤーパネルの順序は逆です（列 1 = 最後の子）。Auto Layout に右から左がないためです。<br>
-  Columns read right to left, so the layer order is reversed (column 1 = last child), because auto layout has no right-to-left mode.
+- 列は右から左に読みますが、Auto Layout には右から左がないため、列は右端から順に、レイヤーパネルの上から並びます（1 列目 = 右端 = 一番上のレイヤー）。<br>
+  Columns read right to left, but auto layout has no right-to-left mode, so the Layers panel lists them from the top in reading order (the first column is the rightmost one, at the top of the list).
 - 縦書き字形は、OpenType の `vert` を API から設定できないため、Unicode の縦書き用文字（︑︒﹁﹂︱ など）への置換で出します。回転セルに切り替えると、フォントに依存しません。<br>
   The OpenType `vert` feature cannot be set through the API, so vertical forms come from Unicode vertical-form characters (︑︒﹁﹂︱ and so on). The rotated-cell mode is font-independent.
 - 数字・英字の縦中横・横向きは、テキストの一部だけ回転できないため、別ノード（セル）になります。<br>

@@ -86,8 +86,8 @@ TYPESETTING / 組版
 GOOD TO KNOW / 知っておいてください
 - Reflow works only while the plugin is open (a Figma limitation). When closed, the block stays as ordinary layers.
   プラグインを開いている間だけ折り返しが効きます（Figma の仕様）。閉じると普通のレイヤーとして残ります。
-- Columns read right to left, so the layer order is reversed (column 1 = last child).
-  列は右から左に読むため、レイヤーパネルの順序は逆です（列 1 = 最後の子）。
+- Columns read right to left. The Layers panel lists them from the top in reading order: the first column is the rightmost one, at the top of the list.
+  列は右から左に読みます。レイヤーパネルでは、読む順に上から並びます（1 列目 = 右端 = 一番上のレイヤー）。
 - Ruby (furigana) is not supported.
   ルビ（ふりがな）は扱いません。
 ```
