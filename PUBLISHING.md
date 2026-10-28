@@ -44,59 +44,59 @@ Vertical Japanese Text — Auto Reflow
 ```
 日本語名: 縦書き自動折り返し
 
-命名の根拠: Community で「vertical japanese」を検索すると Vertical Text JP（9.1k 利用）・Vertja（9.1k）などが出る。これらは「変換して終わり」型で、検索語（vertical / Japanese / text）を名前に含めつつ、競合にない「Auto Reflow」で差別化する。名前欄に長さの上限があって入らない場合は `Vertical Japanese Text` にして、Auto Reflow はタグラインに回す。
+命名の根拠: 海外のユーザーは「縦書き」「tategaki」を知らないので、名前は英語の一般語だけにする。Community で「vertical japanese」を検索すると Vertical Text JP（9.1k 利用）・Vertja（9.1k）などが出る。これらは「変換して終わり」型で、検索語（vertical / Japanese / text）を名前に含めつつ、競合にない「Auto Reflow」で差別化する。名前欄に長さの上限があって入らない場合は `Vertical Japanese Text` にして、Auto Reflow はタグラインに回す。
 
 ### タグライン / Tagline
-Figma のフォームは欄が 1 つなので、日英を 1 行に入れる:
+海外のユーザーが対象なので、**英語を先頭**にする（一覧や検索結果で最初に見えるのは先頭だけ）。欄が 1 つなので 1 行に入れる:
 ```
-枠の高さを動かすだけで、縦書きが折り返す。 / Drag the height. Vertical Japanese text reflows.
+Vertical Japanese writing in Figma: drag the height and the columns reflow. / 縦書きが折り返す
 ```
 長さの上限で入らない場合は、英語だけを入れる:
 ```
-Drag the height. Vertical Japanese text reflows.
+Vertical Japanese writing in Figma: drag the height and the columns reflow.
 ```
 
 ### 説明文 / Description
-1 つの欄に、段落ごとに日本語→英語を交互に並べる（組の中は改行、組の間は空行）:
+1 つの欄に、段落ごとに**英語→日本語**の順で交互に並べる（組の中は改行、組の間は空行）。冒頭は検索語（vertical Japanese text / vertical writing）を含む英語にする:
 ```
-Figma には縦書きがありません。「横向き Auto Layout の中に、1 文字ごとに改行したテキストの列を右から左へ並べる」形で再現できますが、枠を引っぱっても折り返しません。
-Figma has no vertical writing. You can fake it with a horizontal auto-layout frame holding columns of text with one character per line, but dragging the frame never reflows them.
+Vertical Japanese text for Figma. Drag the height of a vertical writing block and its columns reflow automatically, like auto-layout wrap for horizontal text.
+縦書きブロックの高さを引くだけで、列が自動で折り返されます。横書きの Auto Layout wrap と同じ感覚です。
 
-このプラグインは、その折り返しを担います。縦書きブロックの高さのハンドルを引くだけで、列が自動で折り返され、親の幅が伸び縮みします。横書きの Auto Layout wrap と同じ感覚で、右端は動きません。
-This plugin does the reflowing. Drag the height handle of a vertical block and its columns wrap automatically while the parent width hugs the result, much like auto-layout wrap for horizontal text. The right edge stays put.
+Figma has no vertical writing. You can fake it with a horizontal auto-layout frame holding columns of text with one character per line, but dragging the frame never reflows them. This plugin does the reflowing, and the parent width hugs the result. The right edge stays put.
+Figma には縦書きがありません。1 文字ごとに改行した列を右から左へ並べる形で再現できますが、枠を引っぱっても折り返しません。このプラグインがその折り返しを担い、親の幅も追従します。右端は動きません。
 
-■ 使い方 / How to use
-1. テキスト、または縦書きの列を並べた横向き Auto Layout のフレームを選び、「縦書きブロックにする」を押す（「新しい縦書きを作る」からも作れます）
-   Select a text layer, or a horizontal auto-layout frame of vertical columns, and press "Make vertical block" (or start from "Create new vertical text").
-2. ブロックの高さのハンドルを引く
-   Drag the block's height handle.
-3. 文章は、パネルの本文欄、またはキャンバス上の列を直接直す（数字・句読点の元の文字は保たれます）
-   Change the text in the panel, or edit a column directly on the canvas (original digits and punctuation are preserved).
+HOW TO USE / 使い方
+1. Select a text layer, or a horizontal auto-layout frame of vertical columns, and press "Make vertical block" (or start from "Create new vertical text").
+   テキスト、または縦書きの列を並べたフレームを選び、「縦書きブロックにする」を押す（「新しい縦書きを作る」からも作れます）。
+2. Drag the block's height handle.
+   ブロックの高さのハンドルを引く。
+3. Change the text in the panel, or edit a column directly on the canvas (original digits and punctuation are preserved).
+   パネルの本文欄、またはキャンバス上の列を直接直す（数字・句読点の元の文字は保たれます）。
 
-■ 組版 / Typesetting
-・禁則処理（行頭禁則・行末禁則・分割禁止）、句読点のぶら下がり
-  Japanese line-break rules (kinsoku: no punctuation at the start or end of a column, no-split pairs) and hanging punctuation.
-・縦書き用の句読点・括弧・長音（Unicode の縦書き字形、または回転セル）
-  Vertical punctuation, brackets and the long-vowel mark (Unicode vertical forms, or rotated cells).
-・数字：縦中横／横向き／漢数字（二〇二四、二千二十四）／縦に積む
-  Numerals: horizontal-in-vertical (tate-chu-yoko) / sideways / kanji (二〇二四, 二千二十四) / stacked upright.
-・英字：横向き／縦中横／縦に積む
-  Latin: sideways / horizontal-in-vertical / stacked upright.
+TYPESETTING / 組版
+- Japanese line-break rules (kinsoku: no punctuation at the start or end of a column, no-split pairs) and hanging punctuation.
+  禁則処理（行頭禁則・行末禁則・分割禁止）、句読点のぶら下がり。
+- Vertical punctuation, brackets and the long-vowel mark (Unicode vertical forms, or rotated cells).
+  縦書き用の句読点・括弧・長音（Unicode の縦書き字形、または回転セル）。
+- Numerals: horizontal-in-vertical (tate-chu-yoko) / sideways / kanji (二〇二四, 二千二十四) / stacked upright.
+  数字：縦中横／横向き／漢数字／縦に積む。
+- Latin: sideways / horizontal-in-vertical / stacked upright.
+  英字：横向き／縦中横／縦に積む。
 
-■ 知っておいてください / Good to know
-・プラグインを開いている間だけ折り返しが効きます（Figma の仕様）。閉じると、普通のレイヤーとして残ります。
-  Reflow works only while the plugin is open (a Figma limitation). When closed, the block stays as ordinary layers.
-・列は右から左に読むため、レイヤーパネルの順序は逆です（列 1 = 最後の子）。
-  Columns read right to left, so the layer order is reversed (column 1 = last child).
-・ルビ（ふりがな）は扱いません。
-  Ruby (furigana) is not supported.
+GOOD TO KNOW / 知っておいてください
+- Reflow works only while the plugin is open (a Figma limitation). When closed, the block stays as ordinary layers.
+  プラグインを開いている間だけ折り返しが効きます（Figma の仕様）。閉じると普通のレイヤーとして残ります。
+- Columns read right to left, so the layer order is reversed (column 1 = last child).
+  列は右から左に読むため、レイヤーパネルの順序は逆です（列 1 = 最後の子）。
+- Ruby (furigana) is not supported.
+  ルビ（ふりがな）は扱いません。
 ```
 
 ### タグ / Tags
 ```
-vertical text, vertical japanese, japanese typography, tategaki, auto layout, text wrap, cjk, 縦書き
+vertical text, vertical japanese, japanese vertical writing, japanese typography, japanese text, auto layout, text wrap, cjk, 縦書き, tategaki
 ```
-（`tategaki` と `縦書き` は日本語ユーザーの検索用。名前・本文には使わない）
+（`縦書き` と `tategaki` は日本語ユーザー・日本語を知る人の検索用で、最後に置く。海外ユーザーは tategaki を知らないので、名前・タグライン・説明の冒頭には使わない）
 
 ### リリースノート / Release notes（初回）
 ```
