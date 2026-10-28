@@ -52,6 +52,17 @@ npm run watch
 Figma デスクトップで、Plugins → Development → Import plugin from manifest… から `manifest.json` を読み込みます。<br>
 In the Figma desktop app: Plugins → Development → Import plugin from manifest… and pick `manifest.json`.
 
+### 別のマシンで再現する / Reproduce on another machine
+
+```sh
+git clone https://github.com/iori73/vertical-japanese-text.git
+cd vertical-japanese-text
+npm install
+npm run build        # code.js と ui.html は gitignore なので、毎回ここで生成する
+```
+その後、上の手順で `manifest.json` を Figma に読み込みます。`manifest.json` の `id` は公開済みのプラグインの ID なので、書き換えないでください。<br>
+Then import `manifest.json` as above. The `id` in `manifest.json` is the published plugin's ID; leave it as is.
+
 ### 構成 / Layout
 
 - `src/core/` Figma に依存しない純関数: `kinsoku` `numerals` `segment` `layout` `model`（列→ノード、編集の取り込み）`typeset`<br>
