@@ -1,0 +1,27 @@
+# Progress — Vertical Japanese Text — Auto Reflow（旧名 Tategaki Flow）
+
+## 現在のステータス
+- 2026-10-23: 設計・実装・単体テスト（31 件）・実ファイルでの描画検証まで完了。Figma デスクトップでの実機確認は河野さんが「いい感じ」と確認済み。公開準備（Publish）に移行。
+- 場所: ~/dev/figma-plugin/tategaki-flow/（git 未初期化）
+
+## できていること
+- core（Figma 非依存）: 禁則・ぶら下がり・漢数字（位取りあり/なし）・縦中横・縦書き字形・折り返し・直接編集の取り込み（`reconcile`）・モデルの圧縮保存
+- アダプタ: 差分更新の描画、右端固定、既存の縦書き構造の取り込み、新規作成、`nodechange` の監視（間引き・再入防止・冪等）
+- パネル（日英）: 本文・設定・取り込み・新規作成・ON/OFF
+- `use_figma` での検証: 取り込み（既存の縦書き（3 段落）を取り込んで復元）、高さ 250/410/600px で 9/6/6 列、右端のずれ 0、直接編集で 1 字だけ変わり数字・句読点は保持、3 つのモードの見た目
+
+## 未了
+1. **実機確認**（README の手動チェックリスト）: イベント監視・パネル・pluginData は `use_figma` で動かせない
+2. 公開準備: アイコン 128px・カバー 1920×960・カルーセル（assets/）、manifest の `id` を Figma 発行の ID に置換、PUBLISHING.md の文面を確認
+3. git init と初回コミット
+
+## 既知の制限
+- ルビ未対応
+- プラグインを開いている間だけ折り返しが効く（Figma の仕様）
+- 文章が約 2 万字を超えるブロックは、キャンバス上の直接編集を反映しない（パネルで編集）
+- 縦中横・横向きの幅は、フォントの実測ではなく文字幅の推定（余裕 6%）
+
+## 2026-10-23 公開準備
+- LICENSE（MIT）追加、README 更新、git init + 初回コミット
+- 残り: Publish 画面で ID 発行 → manifest の id 置換、カルーセル 3 枚（実機スクショ）、フォーム入力
+- 2026-10-23: 英語圏向けに改名（Tategaki Flow → Vertical Japanese Text — Auto Reflow）。UI・README・PUBLISHING・assets を更新。cover.png は再生成が必要

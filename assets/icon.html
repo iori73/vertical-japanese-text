@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<title>Vertical Japanese Text icon</title>
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  html, body { width: 128px; height: 128px; background: transparent; }
+  .icon {
+    width: 128px; height: 128px; border-radius: 28px; background: #1d1b19; position: relative; overflow: hidden;
+    font-family: 'Hiragino Mincho ProN', 'Shippori Mincho', serif;
+  }
+  .col { position: absolute; top: 20px; writing-mode: vertical-rl; white-space: nowrap; height: 90px; color: #f4efe6; font-size: 25px; line-height: 1; letter-spacing: 3px; }
+  .c1 { left: 74px; } .c2 { left: 40px; }
+  .bar { position: absolute; left: 22px; right: 22px; bottom: 18px; height: 3px; background: #0d99ff; border-radius: 2px; }
+  .dot { position: absolute; bottom: 12px; width: 14px; height: 14px; background: #fff; border: 2px solid #0d99ff; border-radius: 2px; }
+</style>
+</head>
+<body>
+  <div class="icon">
+    <div class="col c1">縦書き</div>
+    <div class="col c2">自動</div>
+    <div class="bar"></div>
+    <i class="dot" style="left:15px"></i><i class="dot" style="right:15px"></i>
+  </div>
+</body>
+</html>

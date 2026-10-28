@@ -1,0 +1,12 @@
+{
+  "name": "Vertical Japanese Text — Auto Reflow",
+  "id": "1630000000000000099",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "ui.html",
+  "editorType": ["figma"],
+  "documentAccess": "dynamic-page",
+  "networkAccess": {
+    "allowedDomains": ["none"]
+  }
+}

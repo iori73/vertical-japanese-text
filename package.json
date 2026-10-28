@@ -1,0 +1,19 @@
+{
+  "name": "vertical-japanese-text",
+  "version": "0.1.0",
+  "description": "Figma plugin that gives vertical Japanese text a wrap-like behavior: drag the height of an auto-layout block and the columns reflow, with line-break rules, horizontal-in-vertical numerals and vertical punctuation forms.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "npm run typecheck && node build.mjs",
+    "watch": "node build.mjs --watch",
+    "test": "node --test \"tests/*.test.ts\"",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.code.json --noEmit"
+  },
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.100.2",
+    "@types/node": "^22.10.0",
+    "esbuild": "^0.27.3",
+    "typescript": "^5.3.3"
+  }
+}
