@@ -1,6 +1,7 @@
 # Vertical Japanese Text — Auto Reflow — Figma Community 公開の準備
 
 公開フォームに貼る文面と、アセットの一覧です。**公開の申請は河野さんのアカウントで行います**（Plugins → Manage plugins → Publish）。
+**2026-10-28 公開済み:** https://www.figma.com/community/plugin/1697276030514744426
 ソース: https://github.com/iori73/vertical-japanese-text
 
 ## 1. 公開前にやること

@@ -1,5 +1,7 @@
 # Vertical Japanese Text — Auto Reflow（縦書き自動折り返し）
 
+[Figma Community で入手 / Get it on Figma Community](https://www.figma.com/community/plugin/1697276030514744426)
+
 縦書きブロックの高さを動かすだけで、列が自動で折り返され、親の幅が伸び縮みします。横書きの Auto Layout wrap を、縦書きに持ち込むプラグインです。<br>
 Drag the height of a vertical block and its columns reflow while the width hugs the result: a wrap-like behavior for Japanese vertical text.
 

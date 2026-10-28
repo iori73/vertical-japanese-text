@@ -40,3 +40,11 @@
 ## 命名は先に Community で競合を検索する（2026-10-23）
 - 当初の名前 Tategaki Flow は日本人にしか通じず、「vertical japanese」の検索に出ない。公開前に Figma Community を検索して、先行プラグイン（Vertical Text JP / Vertja など）と検索語を確認する。
 - 名前には英語の一般語（Vertical Japanese Text）、差別化（Auto Reflow）を入れる。tategaki はタグにだけ残す。
+
+
+## Figma Community への公開で詰まった所（2026-10-28）
+- **Plugin ID は、公開フォームを開くたびに「Generate ID」で発行される。** ID を manifest.json に入れて、Figma で `Import plugin from manifest…` を取り込み直すまで、ステップ 4 に「Invalid ID in manifest.json」が出る。フォームは閉じずに、取り込み直すと警告が消える。
+- **ID の食い違い（仮の ID を置いていた旧フォルダを取り込んでいた）に注意。** 公開に使うフォルダの manifest を取り込む。
+- **Data security の質問 4:** `node.setPluginData` を使うなら「Yes, ... stores data ... locally」を選ぶ（「No」は誤り）。ネットワーク・認証・バックエンドは「なし」。
+- **ステップ 4 のどこかに「Author (Share as)」の選択があり、未選択だと Publish が進まない。** エラー表示が出ないので、押せないときはフォームを最後までスクロールして、未選択の項目を探す。
+- 画像（アイコン・カバー・カルーセル）は HTML を headless Chrome で撮った PNG で足りた。実機のスクリーンショットは必須ではない。
