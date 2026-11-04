@@ -4,6 +4,7 @@
 // reaction is idempotent: a re-render is skipped when the source, settings and
 // frame height produce the same signature as the last render.
 
+import { bi } from '../messages.ts';
 import { reconcile, type CurrentColumn, type CurrentNode, type NodeKind } from '../core/model.ts';
 import { KEY_CONFIG, findBlock, readConfig, readModel, writeConfig, type BlockConfig } from './block.ts';
 import { runStyleOf } from './convert.ts';
@@ -155,7 +156,12 @@ export class Watcher {
       if (model) {
         const paragraphs = reconcile(model, readCurrent(frame, model));
         if (paragraphs === null) {
-          this.onError('文章が長いため、キャンバス上の直接編集は反映できません。パネルで編集してください。');
+          this.onError(
+            bi(
+              '文章が長いため、キャンバス上の直接編集は反映できません。パネルで編集してください。',
+              'The text is too long to read back from the canvas. Edit it in the panel instead.',
+            ),
+          );
         } else if (JSON.stringify(paragraphs) !== JSON.stringify(cfg.paragraphs)) {
           next = { ...next, paragraphs };
           changed = true;

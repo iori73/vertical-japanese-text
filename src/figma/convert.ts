@@ -1,6 +1,7 @@
 // Turn existing nodes into blocks, create new blocks, and describe the selection.
 
 import { capacityFor } from '../core/typeset.ts';
+import { bi } from '../messages.ts';
 import { fromVerticalForm } from '../core/vertical-forms.ts';
 import type { BlockInfo, SelectionState } from '../protocol.ts';
 import {
@@ -108,7 +109,12 @@ export function adoptsAsFrame(node: SceneNode): node is FrameNode {
 export async function convertNode(store: Store, node: SceneNode): Promise<FrameNode> {
   if (node.type === 'TEXT') return convertText(store, node);
   if (adoptsAsFrame(node)) return convertFrame(store, node);
-  throw new Error('縦書きブロックにできるのは、テキスト、または横向き Auto Layout のフレームです。');
+  throw new Error(
+    bi(
+      '縦書きブロックにできるのは、テキスト、または横向き Auto Layout のフレームです。',
+      'Only a text layer or a horizontal auto-layout frame can become a vertical block.',
+    ),
+  );
 }
 
 async function convertText(store: Store, t: TextNode): Promise<FrameNode> {
@@ -123,7 +129,7 @@ async function convertText(store: Store, t: TextNode): Promise<FrameNode> {
     pitch: lh ?? base.pitch,
   });
   const parent = t.parent as (BaseNode & ChildrenMixin) | null;
-  if (!parent) throw new Error('親が見つかりません。');
+  if (!parent) throw new Error(bi('親が見つかりません。', 'The parent layer was not found.'));
   const index = parent.children.indexOf(t);
   const frame = figma.createFrame();
   frame.name = `縦書き: ${t.characters.replace(/\s+/g, ' ').slice(0, 12)}`;
@@ -171,7 +177,7 @@ export async function createBlock(
   const base = defaultConfig(style?.fontSize ? { fontSize: style.fontSize } : {});
   const cfg = await loadAvailable({ ...base, ...(style ?? {}), paragraphs });
   const frame = figma.createFrame();
-  frame.name = '縦書き';
+  frame.name = 'Vertical text（縦書き）';
   frame.fills = [];
   frame.clipsContent = false;
   figma.currentPage.appendChild(frame);
@@ -212,7 +218,7 @@ export function blockInfo(store: Store, frame: FrameNode): BlockInfo | null {
 export function describeSelection(store: Store): SelectionState {
   const sel = figma.currentPage.selection;
   if (sel.length === 0) return { kind: 'none' };
-  if (sel.length > 1) return { kind: 'unsupported', reason: '1 つだけ選んでください。' };
+  if (sel.length > 1) return { kind: 'unsupported', reason: bi('1 つだけ選んでください。', 'Select exactly one layer.') };
   const node = sel[0];
   const block = findBlock(store, node);
   if (block) {
@@ -223,6 +229,9 @@ export function describeSelection(store: Store): SelectionState {
   if (adoptsAsFrame(node)) return { kind: 'convertible', what: 'frame', name: node.name };
   return {
     kind: 'unsupported',
-    reason: 'テキスト、または横向き Auto Layout のフレームを選んでください。',
+    reason: bi(
+      'テキスト、または横向き Auto Layout のフレームを選んでください。',
+      'Select a text layer or a horizontal auto-layout frame.',
+    ),
   };
 }

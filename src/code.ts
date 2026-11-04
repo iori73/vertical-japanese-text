@@ -5,6 +5,7 @@ import { convertNode, createBlock, describeSelection, runStyleOf, unblock } from
 import { renderBlock } from './figma/render.ts';
 import { pluginStore as store } from './figma/store.ts';
 import { Watcher } from './figma/watch.ts';
+import { bi } from './messages.ts';
 import type { ApplyPatch, ToCode, ToUI } from './protocol.ts';
 
 declare const __html__: string;
@@ -65,7 +66,7 @@ figma.ui.onmessage = async (msg: ToCode) => {
         break;
       case 'convert': {
         const sel = figma.currentPage.selection;
-        if (sel.length !== 1) throw new Error('1 つだけ選んでください。');
+        if (sel.length !== 1) throw new Error(bi('1 つだけ選んでください。', 'Select exactly one layer.'));
         const frame = await convertNode(store, sel[0]);
         figma.currentPage.selection = [frame];
         sendSelection();

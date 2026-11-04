@@ -16,6 +16,7 @@ import {
   type NodePlan,
 } from '../core/model.ts';
 import { capacityFor, typeset } from '../core/typeset.ts';
+import { bi } from '../messages.ts';
 import { KEY_MODEL, KEY_SIG, readConfig, readModel, type BlockConfig } from './block.ts';
 import type { Store } from './store.ts';
 
@@ -234,7 +235,7 @@ export async function renderBlock(
   opts: { force?: boolean } = {},
 ): Promise<RenderResult> {
   const cfg = readConfig(store, frame);
-  if (!cfg) throw new Error('not a vertical text block');
+  if (!cfg) throw new Error(bi('縦書きブロックではありません。', 'This is not a vertical text block.'));
   await figma.loadFontAsync({ family: cfg.fontFamily, style: cfg.fontStyle });
 
   const right = frame.x + frame.width;

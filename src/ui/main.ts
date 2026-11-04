@@ -1,6 +1,7 @@
 // Plugin panel. Plain DOM, no framework.
 
 import type { FormsMode, LatinMode, NumeralMode, Settings } from '../core/types.ts';
+import { pick } from '../messages.ts';
 import type { ApplyPatch, BlockInfo, SelectionState, ToCode, ToUI } from '../protocol.ts';
 
 // Panel language: the saved choice wins, otherwise follow the app language.
@@ -9,7 +10,7 @@ let ja = (navigator.language || 'en').toLowerCase().startsWith('ja');
 const T = {
   title: ['縦書き自動折り返し', 'Vertical Japanese Text'],
   auto: ['自動で折り返す', 'Auto reflow'],
-  watching: ['監視中のブロック', 'Blocks watched'],
+  watching: ['追従中のブロック', 'Blocks in sync'],
   lead: [
     '縦書きブロックの高さを動かすと、列が自動で折り返されます。',
     'Drag the height of a vertical block and its columns reflow.',
@@ -31,13 +32,29 @@ const T = {
   createBtn: ['作成', 'Create'],
   source: ['本文（段落は空行で区切る）', 'Text (separate paragraphs with a blank line)'],
   size: ['文字サイズ', 'Font size'],
-  advance: ['字送り', 'Character pitch'],
-  pitch: ['行送り（列の幅）', 'Column pitch'],
+  advance: ['字送り（文字の間隔）', 'Character pitch'],
+  advanceTip: [
+    '字送り：1 字から次の字までの距離（文字サイズを含む）。',
+    'Distance from one character to the next (includes the character size).',
+  ],
+  pitch: ['行送り（列の間隔）', 'Column pitch'],
+  pitchTip: [
+    '行送り：1 列から次の列までの距離。',
+    'Distance from one column to the next.',
+  ],
   numerals: ['数字', 'Numerals'],
-  latin: ['英字', 'Latin'],
-  forms: ['縦書き字形', 'Vertical forms'],
-  kinsoku: ['禁則処理', 'Line-break rules (kinsoku)'],
-  hang: ['句読点のぶら下がり', 'Hang 、。 past the limit'],
+  latin: ['英字', 'Latin letters (A–Z)'],
+  forms: ['句読点・括弧の縦書き表示', 'Punctuation and brackets'],
+  kinsoku: ['行頭・行末のルールを守る', 'Keep punctuation off column edges'],
+  kinsokuTip: [
+    '禁則処理：、。や閉じ括弧を列の先頭に、開き括弧を列の末尾に置かない。',
+    'Keeps 、。 and closing brackets off the start of a column, and opening brackets off the end.',
+  ],
+  hang: ['句読点を列の下にはみ出させる', 'Let 、。 hang past the column end'],
+  hangTip: [
+    'ぶら下がり：列の末尾にくる、。を、列の下の余白に出して、字詰めを保つ。',
+    'Hanging punctuation: a 、。 at the end of a column goes into the margin below it.',
+  ],
   stats: ['{c} 列 ・ 1 列 {n} 字 ・ 高さ {h}px', '{c} columns · {n} per column · height {h}px'],
   unblock: ['ブロックを解除（普通のレイヤーに戻す）', 'Release block (back to plain layers)'],
   fontNote: ['フォント', 'Font'],
@@ -52,20 +69,20 @@ const T = {
 } as const;
 
 const NUMERALS: [NumeralMode, string, string][] = [
-  ['tcy', '縦中横（2 桁まで）', 'Horizontal in vertical (up to 2 digits)'],
-  ['sideways', '横向き', 'Sideways'],
-  ['kanji', '漢数字（二〇二四）', 'Kanji, digit by digit (二〇二四)'],
-  ['kanji-place', '漢数字（二千二十四）', 'Kanji, place values (二千二十四)'],
-  ['upright', '縦に積む', 'Stacked upright'],
+  ['tcy', '横並びで 1 マスに（縦中横・2 桁まで）', 'Side by side in one cell (up to 2 digits)'],
+  ['sideways', '横向き（90°回転）', 'Rotated 90°'],
+  ['kanji', '漢数字（二〇二四）', 'Kanji numerals (二〇二四)'],
+  ['kanji-place', '漢数字（二千二十四）', 'Kanji numerals with place values (二千二十四)'],
+  ['upright', '1 字ずつ縦に積む', 'One digit per line'],
 ];
 const LATIN: [LatinMode, string, string][] = [
-  ['sideways', '横向き', 'Sideways'],
-  ['tcy', '縦中横（2 字まで）', 'Horizontal in vertical (up to 2 letters)'],
-  ['upright', '縦に積む', 'Stacked upright'],
+  ['sideways', '横向き（90°回転）', 'Rotated 90°'],
+  ['tcy', '横並びで 1 マスに（縦中横・2 字まで）', 'Side by side in one cell (up to 2 letters)'],
+  ['upright', '1 字ずつ縦に積む', 'One letter per line'],
 ];
 const FORMS: [FormsMode, string, string][] = [
-  ['unicode', '縦書き用の文字に置換', 'Unicode vertical forms'],
-  ['rotate', '回転（どのフォントでも）', 'Rotated cells (any font)'],
+  ['unicode', '縦書き用の文字に置き換える', 'Use vertical-form characters'],
+  ['rotate', '回転で代用（どのフォントでも）', 'Rotate instead (works with any font)'],
   ['none', 'そのまま', 'As typed'],
 ];
 
@@ -129,16 +146,16 @@ function blockCard(i: BlockInfo): string {
       <p class="stats" id="stats"></p>
       <div class="row">
         <div class="field"><label class="t">${t('size')}</label><input type="number" id="fontSize" min="1" step="0.5" value="${num2(i.fontSize)}"></div>
-        <div class="field"><label class="t">${t('advance')}</label><input type="number" id="advance" min="1" step="0.1" value="${num2(i.advance)}"></div>
-        <div class="field"><label class="t">${t('pitch')}</label><input type="number" id="pitch" min="1" step="0.1" value="${num2(i.pitch)}"></div>
+        <div class="field"><label class="t" title="${esc(t('advanceTip'))}">${t('advance')}</label><input type="number" id="advance" min="1" step="0.1" value="${num2(i.advance)}"></div>
+        <div class="field"><label class="t" title="${esc(t('pitchTip'))}">${t('pitch')}</label><input type="number" id="pitch" min="1" step="0.1" value="${num2(i.pitch)}"></div>
         <div class="field"><label class="t">${t('fontNote')}</label><input type="text" disabled value="${esc(i.fontFamily)} ${esc(i.fontStyle)}" style="width:100%;font:inherit;padding:5px 6px;border:0;background:var(--figma-color-bg-secondary,#f5f5f5);color:inherit;border-radius:4px"></div>
         <div class="field full"><label class="t">${t('numerals')}</label><select id="numerals">${options(NUMERALS, s.numerals)}</select></div>
         <div class="field full"><label class="t">${t('latin')}</label><select id="latin">${options(LATIN, s.latin)}</select></div>
         <div class="field full"><label class="t">${t('forms')}</label><select id="forms">${options(FORMS, s.forms)}</select></div>
       </div>
       <div class="checks">
-        <label><input type="checkbox" id="kinsoku" ${s.kinsoku ? 'checked' : ''}/> ${t('kinsoku')}</label>
-        <label><input type="checkbox" id="hang" ${s.hang ? 'checked' : ''}/> ${t('hang')}</label>
+        <label title="${esc(t('kinsokuTip'))}"><input type="checkbox" id="kinsoku" ${s.kinsoku ? 'checked' : ''}/> ${t('kinsoku')}</label>
+        <label title="${esc(t('hangTip'))}"><input type="checkbox" id="hang" ${s.hang ? 'checked' : ''}/> ${t('hang')}</label>
       </div>
       <p class="hint">${t('hintBlock')}</p>
     </div>
@@ -223,7 +240,7 @@ function bodyFor(s: SelectionState): string {
         </div>
         ${createCard()}`;
     case 'unsupported':
-      return `<div class="card"><p style="margin:0">${esc(s.reason)}</p></div>${createCard()}`;
+      return `<div class="card"><p style="margin:0">${esc(pick(s.reason, ja))}</p></div>${createCard()}`;
     default:
       return `<div class="card"><p style="margin:0">${t('none')}</p></div>${createCard()}`;
   }
@@ -259,7 +276,7 @@ let toastTimer: number | undefined;
 function toast(level: 'info' | 'error', message: string): void {
   const el = document.getElementById('toast');
   if (!el) return;
-  el.innerHTML = `<div class="toast ${level}">${esc(message)}</div>`;
+  el.innerHTML = `<div class="toast ${level}">${esc(pick(message, ja))}</div>`;
   window.clearTimeout(toastTimer);
   toastTimer = window.setTimeout(() => (el.innerHTML = ''), 4000);
 }

@@ -15,4 +15,4 @@ body { position: relative; overflow: hidden; background: var(--ink); color: var(
 .h { position: absolute; width: 16px; height: 16px; background: var(--paper); border: 3px solid var(--label); }
 .h.a { left: -9px; top: -9px; } .h.b { right: -9px; top: -9px; } .h.c { left: -9px; bottom: -9px; } .h.d { right: -9px; bottom: -9px; }
 .chip { position: absolute; left: 0; top: 100%; margin-top: 14px; background: var(--label); color: var(--paper); font-size: 20px; line-height: 1; padding: 8px 12px; white-space: nowrap; }
-.cap { position: absolute; top: 100%; margin-top: 14px; left: 0; font-size: 24px; line-height: 1.3; white-space: nowrap; }
+.cap { position: absolute; top: 100%; margin-top: 14px; left: 0; font-size: 24px; line-height: 1.3; width: 240px; }
