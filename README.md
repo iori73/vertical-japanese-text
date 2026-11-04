@@ -24,9 +24,9 @@ Figma has no vertical writing. You can fake it with a horizontal auto-layout fra
 - 列は右から左に読みますが、Auto Layout には右から左がないため、列は右端から順に、レイヤーパネルの上から並びます（1 列目 = 右端 = 一番上のレイヤー）。<br>
   Columns read right to left, but auto layout has no right-to-left mode, so the Layers panel lists them from the top in reading order (the first column is the rightmost one, at the top of the list).
 - 縦書き字形は、OpenType の `vert` を API から設定できないため、Unicode の縦書き用文字（︑︒﹁﹂︱ など）への置換で出します。回転セルに切り替えると、フォントに依存しません。<br>
-  The OpenType `vert` feature cannot be set through the API, so vertical forms come from Unicode vertical-form characters (︑︒﹁﹂︱ and so on). The rotated-cell mode is font-independent.
+  The OpenType `vert` feature cannot be set through the API, so punctuation and brackets are swapped for their vertical-form characters (︑︒﹁﹂︱ and so on). The rotate option works with any font.
 - 数字・英字の縦中横・横向きは、テキストの一部だけ回転できないため、別ノード（セル）になります。<br>
-  Horizontal-in-vertical (tate-chu-yoko) and sideways runs are separate nodes (cells), because part of a text layer cannot be rotated.
+  Digits or letters set side by side in one cell, and rotated ones, are separate layers, because part of a text layer cannot be rotated.
 - ルビは扱いません。<br>
   Ruby (furigana) is not supported.
 
@@ -34,10 +34,10 @@ Figma has no vertical writing. You can fake it with a horizontal auto-layout fra
 
 | 設定 / Setting | 選べるもの / Options |
 |---|---|
-| 数字 / Numerals | 縦中横（2 桁まで）· 横向き · 漢数字（二〇二四）· 漢数字（二千二十四）· 縦に積む |
-| 英字 / Latin | 横向き · 縦中横（2 字まで）· 縦に積む |
-| 縦書き字形 / Vertical forms | Unicode 置換 · 回転セル · そのまま |
-| 禁則処理 / Line-break rules | 行頭禁則・行末禁則・分割禁止（……／——）。追い出しで処理 |
+| 数字 / Numerals | 横並びで 1 マスに（縦中横・2 桁まで）· 横向き（90°回転）· 漢数字（二〇二四）· 漢数字（二千二十四）· 1 字ずつ縦に積む<br>Side by side in one cell · Rotated 90° · Kanji numerals · Kanji numerals with place values · One digit per line |
+| 英字 / Latin letters | 横向き（90°回転）· 横並びで 1 マスに（2 字まで）· 1 字ずつ縦に積む<br>Rotated 90° · Side by side in one cell · One letter per line |
+| 句読点・括弧の縦書き表示 / Punctuation and brackets | 縦書き用の文字に置き換える · 回転で代用 · そのまま<br>Use vertical-form characters · Rotate instead · As typed |
+| 行頭・行末のルール / Keep punctuation off column edges | 禁則処理。、。と閉じ括弧を列の先頭に、開き括弧を列の末尾に置かない。……と——は分けない |
 | ぶら下がり / Hanging | 句読点 `、。` を列の上限から 1 マスまで出す |
 
 ## 開発 / Development

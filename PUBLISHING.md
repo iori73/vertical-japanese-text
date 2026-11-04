@@ -32,7 +32,7 @@
 | # | 内容 |
 |---|---|
 | 1 | 高さ 640 / 430 / 300px で列が折り返す（幅が追従する） |
-| 2 | パネルの設定（数字・英字・縦書き字形・禁則処理・ぶら下がり） |
+| 2 | パネルの設定（数字・英字・句読点と括弧の向き・行頭行末のルール・句読点のはみ出し） |
 | 3 | 数字の 4 通りの組み方（縦中横・横向き・漢数字・縦に積む） |
 
 実機のスクリーンショットに差し替えたい場合は、同じ内容を 1920×960 で撮る。
@@ -75,14 +75,14 @@ HOW TO USE / 使い方
    パネルの本文欄、またはキャンバス上の列を直接直す（数字・句読点の元の文字は保たれます）。
 
 TYPESETTING / 組版
-- Japanese line-break rules (kinsoku: no punctuation at the start or end of a column, no-split pairs) and hanging punctuation.
-  禁則処理（行頭禁則・行末禁則・分割禁止）、句読点のぶら下がり。
-- Vertical punctuation, brackets and the long-vowel mark (Unicode vertical forms, or rotated cells).
-  縦書き用の句読点・括弧・長音（Unicode の縦書き字形、または回転セル）。
-- Numerals: horizontal-in-vertical (tate-chu-yoko) / sideways / kanji (二〇二四, 二千二十四) / stacked upright.
-  数字：縦中横／横向き／漢数字／縦に積む。
-- Latin: sideways / horizontal-in-vertical / stacked upright.
-  英字：横向き／縦中横／縦に積む。
+- Line-break rules for punctuation: no 、。 or closing brackets at the start of a column, no opening brackets at the end, and optional hanging punctuation.
+  行頭・行末のルール（、。や閉じ括弧を列の先頭に置かない、など）、句読点のぶら下がり。
+- Vertical forms of punctuation, brackets and the long-vowel mark ー (vertical-form characters, or rotation for any font).
+  縦書き用の句読点・括弧・長音（縦書き用の文字、またはどのフォントでも使える回転）。
+- Numerals: side by side in one cell / rotated 90° / kanji numerals (二〇二四, 二千二十四) / one digit per line.
+  数字：横並びで 1 マスに（縦中横）／横向き／漢数字／1 字ずつ縦に積む。
+- Latin letters: rotated 90° / side by side in one cell / one letter per line.
+  英字：横向き／横並びで 1 マスに／1 字ずつ縦に積む。
 
 GOOD TO KNOW / 知っておいてください
 - Reflow works only while the plugin is open (a Figma limitation). When closed, the block stays as ordinary layers.
