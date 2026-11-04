@@ -2,21 +2,20 @@
 <html lang="en">
 <head><meta charset="utf-8" /><title>carousel2</title>
 <link rel="stylesheet" href="_carousel.css" />
-<style>.panel{position:absolute;right:130px;top:290px;width:520px;background:#fff;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.18);padding:30px 32px}
-.panel .ttl{font-weight:700;font-size:26px;margin-bottom:22px}
-.panel label{display:block;font-size:19px;color:var(--muted);margin:16px 0 6px}
-.panel .sel{border:1.5px solid #d9d4ca;border-radius:8px;padding:12px 14px;font-size:22px}
-.panel .chk{font-size:22px;margin-top:20px}.panel .chk b{color:var(--blue);margin-right:8px}
-.panel .stat{margin-top:26px;font-size:18px;color:var(--muted)}</style></head>
+<style>.panel { position: absolute; left: 1250px; top: 200px; width: 590px; background: var(--paper); color: var(--ink); padding: 34px 38px; }
+.panel .pt { font-size: 28px; margin-bottom: 18px; }
+.panel .lab { font-size: 19px; margin: 16px 0 6px; opacity: .7; }
+.panel .sel { border: 2px solid var(--washi); padding: 11px 14px; font-size: 22px; font-weight: 400; }
+.panel .chk { font-size: 22px; margin-top: 20px; font-weight: 400; } .panel .chk b { color: var(--label); margin-right: 8px; }
+.panel .st { margin-top: 24px; font-size: 18px; opacity: .65; font-weight: 400; }</style></head>
 <body>
-<div class="head"><h1>Set numerals, Latin and forms</h1><p>Line-break rules and hanging punctuation are one checkbox each.</p></div><div style="position:absolute;left:150px;top:330px"><div class="frame" style="height:430px"><i class="h a"></i><i class="h b"></i><i class="h c"></i><i class="h d"></i><div class="t">吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。</div><span class="badge">410 px</span></div></div>
-<div class="panel">
-  <div class="ttl">Vertical Japanese Text</div>
-  <label>Numerals</label><div class="sel">Horizontal in vertical (up to 2 digits)</div>
-  <label>Latin</label><div class="sel">Sideways</div>
-  <label>Vertical forms</label><div class="sel">Unicode vertical forms</div>
-  <div class="chk"><b>✓</b> Line-break rules (kinsoku)</div>
-  <div class="chk"><b>✓</b> Hang 、。 past the limit</div>
-  <div class="stat">6 columns · 12 per column · height 410px</div>
-</div>
+<div class="label"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#FCFAF2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="21" x2="14" y1="4" y2="4"/><line x1="10" x2="3" y1="4" y2="4"/><line x1="21" x2="12" y1="12" y2="12"/><line x1="8" x2="3" y1="12" y2="12"/><line x1="21" x2="16" y1="20" y2="20"/><line x1="12" x2="3" y1="20" y2="20"/><line x1="14" x2="14" y1="2" y2="6"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="16" x2="16" y1="18" y2="22"/></svg></div>
+<div class="title">Set numerals, Latin<br>and vertical forms</div>
+<div class="sub">禁則処理と句読点のぶら下がりも、チェックひとつです。</div>
+<div class="card" style="left:800px;top:300px;width:366px;height:470px"><div class="t" style="height:410px">吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所で</div><i class="h a"></i><i class="h b"></i><i class="h c"></i><i class="h d"></i><span class="chip">410 px</span></div><div class="panel"><div class="pt">Vertical Japanese Text</div>
+<div class="lab">Numerals</div><div class="sel">Horizontal in vertical (up to 2 digits)</div>
+<div class="lab">Latin</div><div class="sel">Sideways</div>
+<div class="lab">Vertical forms</div><div class="sel">Unicode vertical forms</div>
+<div class="chk"><b>✓</b> Line-break rules (kinsoku)</div><div class="chk"><b>✓</b> Hang 、。 past the limit</div>
+<div class="st">6 columns · 12 per column · height 410px</div></div>
 </body></html>

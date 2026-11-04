@@ -37,5 +37,5 @@
 - 申請時の回答: バックエンドなし・ネットワークなし・認証なし・pluginData に保存あり・ソロ開発
 - 残り: プルリクエスト #1 の main への取り込み、旧フォルダ（~/dev/figma-plugin/tategaki-flow）の整理、公開ページの表示確認（検索結果での見え方）
 
-- 2026-11-04: カバーとアイコンを、ai-ops の note サムネイル型ライブラリ v4（reference/wa-colors/thumbnail-pattern-library-v4.md）に合わせて作り直し（T-08・デザインカテゴリ：濃蘇芳 #491022／白練 #FCFAF2／弁柄色 #8F2E14／和紙 #E7DDC6）。カルーセル 3 枚は旧スタイルのまま
+- 2026-11-04: カバーとアイコンを、ai-ops の note サムネイル型ライブラリ v4（reference/wa-colors/thumbnail-pattern-library-v4.md）に合わせて作り直し（T-08・デザインカテゴリ：濃蘇芳 #491022／白練 #FCFAF2／弁柄色 #8F2E14／和紙 #E7DDC6）。カルーセル 3 枚（英語・日本語）も同じスタイルで作り直し
 - 2026-11-04: パネルに 日本語 / EN の切り替えを追加（PR #3、clientStorage に保存）

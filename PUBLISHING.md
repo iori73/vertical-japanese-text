@@ -27,7 +27,7 @@
 
 ## 3. カルーセル（HTML で描いた説明図）
 
-`assets/carousel1〜3.png`（英語）と `assets/carousel1〜3-ja.png`（日本語）を用意済み。元は同名の `.html`（共通 CSS は `_carousel.css`）。サンプル文は夏目漱石『吾輩は猫である』（著作権切れ）。
+`assets/carousel1〜3.png`（英語）と `assets/carousel1〜3-ja.png`（日本語）を用意済み。元は同名の `.html`（共通 CSS は `_carousel.css`）。カバーと同じ規格（note サムネ型ライブラリ v4・デザインカテゴリ）で描いている。サンプル文は夏目漱石『吾輩は猫である』（著作権切れ）。
 
 | # | 内容 |
 |---|---|
