@@ -49,9 +49,15 @@ async function apply(patch: ApplyPatch): Promise<void> {
 figma.ui.onmessage = async (msg: ToCode) => {
   try {
     switch (msg.type) {
-      case 'ready':
+      case 'ready': {
+        const saved = await figma.clientStorage.getAsync('lang');
+        post({ type: 'lang', lang: saved === 'ja' || saved === 'en' ? saved : null });
         sendSelection();
         sendAuto();
+        break;
+      }
+      case 'setLang':
+        await figma.clientStorage.setAsync('lang', msg.lang);
         break;
       case 'apply':
         await apply(msg.patch);

@@ -3,7 +3,8 @@
 import type { FormsMode, LatinMode, NumeralMode, Settings } from '../core/types.ts';
 import type { ApplyPatch, BlockInfo, SelectionState, ToCode, ToUI } from '../protocol.ts';
 
-const ja = (navigator.language || 'en').toLowerCase().startsWith('ja');
+// Panel language: the saved choice wins, otherwise follow the app language.
+let ja = (navigator.language || 'en').toLowerCase().startsWith('ja');
 
 const T = {
   title: ['縦書き自動折り返し', 'Vertical Japanese Text'],
@@ -92,8 +93,12 @@ function shell(inner: string): string {
   return `
     <div class="head">
       <h1>${t('title')}</h1>
-      <label class="switch"><input type="checkbox" id="auto" ${auto ? 'checked' : ''}/> ${t('auto')}</label>
+      <div class="seg" role="group" aria-label="Language">
+        <button type="button" data-lang="ja" class="${ja ? 'on' : ''}" aria-pressed="${ja}">日本語</button>
+        <button type="button" data-lang="en" class="${ja ? '' : 'on'}" aria-pressed="${!ja}">EN</button>
+      </div>
     </div>
+    <label class="switch"><input type="checkbox" id="auto" ${auto ? 'checked' : ''}/> ${t('auto')}</label>
     <p class="sub">${t('lead')}${watching ? ` · ${t('watching')}: ${watching}` : ''}</p>
     <div id="body">${inner}</div>
     <div id="toast"></div>`;
@@ -176,9 +181,20 @@ function queueApply(): void {
   }, 250);
 }
 
+function setLang(lang: 'ja' | 'en'): void {
+  if ((lang === 'ja') === ja) return;
+  ja = lang === 'ja';
+  send({ type: 'setLang', lang });
+  builtFor = '';
+  render();
+}
+
 function wire(): void {
   const $ = (id: string) => document.getElementById(id);
   $('auto')?.addEventListener('change', (e) => send({ type: 'auto', on: (e.target as HTMLInputElement).checked }));
+  document.querySelectorAll<HTMLButtonElement>('.seg button').forEach((b) =>
+    b.addEventListener('click', () => setLang(b.dataset.lang === 'ja' ? 'ja' : 'en')),
+  );
   $('convert')?.addEventListener('click', () => send({ type: 'convert' }));
   $('unblock')?.addEventListener('click', () => send({ type: 'unblock' }));
   $('createBtn')?.addEventListener('click', () => {
@@ -255,6 +271,12 @@ window.onmessage = (e: MessageEvent) => {
     auto = msg.on;
     watching = msg.watching;
     render();
+  } else if (msg.type === 'lang') {
+    if (msg.lang) {
+      ja = msg.lang === 'ja';
+      builtFor = '';
+      render();
+    }
   } else if (msg.type === 'toast') {
     toast(msg.level, msg.message);
   }

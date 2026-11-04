@@ -26,6 +26,7 @@ export type SelectionState =
 export type ToUI =
   | { type: 'selection'; state: SelectionState }
   | { type: 'auto'; on: boolean; watching: number }
+  | { type: 'lang'; lang: 'ja' | 'en' | null }
   | { type: 'toast'; level: 'info' | 'error'; message: string };
 
 export interface ApplyPatch {
@@ -42,4 +43,5 @@ export type ToCode =
   | { type: 'convert' }
   | { type: 'create'; paragraphs: string[] }
   | { type: 'auto'; on: boolean }
+  | { type: 'setLang'; lang: 'ja' | 'en' }
   | { type: 'unblock' };
