@@ -1,59 +1,56 @@
 <!doctype html>
-<html lang="ja">
+<html lang="en">
 <head>
 <meta charset="utf-8" />
 <title>Vertical Japanese Text cover</title>
+<!--
+  Layout follows the note thumbnail system (ai-ops: reference/wa-colors/thumbnail-pattern-library-v4.md), type T-08:
+  margin 80, category label 80x80 at (80,80), title at (80,168), title style = bold / line-height 140% / letter-spacing -1%.
+  Category: design (ink #491022, text #FCFAF2, label #8F2E14). Surface on the dark ground is washi #E7DDC6.
+  Canvas is 1920x960 because Figma Community covers are 2:1.
+-->
 <style>
-  :root { --ink: #1d1b19; --paper: #f4efe6; --muted: #7b756b; --blue: #0d99ff; }
+  :root { --ink:#491022; --paper:#FCFAF2; --label:#8F2E14; --washi:#E7DDC6; }
   * { box-sizing: border-box; margin: 0; }
   html, body { width: 1920px; height: 960px; }
   body {
-    background: var(--paper); color: var(--ink); overflow: hidden;
-    font-family: 'Hiragino Mincho ProN', 'Shippori Mincho', 'Yu Mincho', serif;
-    display: grid; grid-template-columns: 860px 1fr; align-items: center;
+    position: relative; overflow: hidden; background: var(--ink); color: var(--paper);
+    font-family: 'YuGothic', 'Yu Gothic', 'Hiragino Sans', sans-serif; font-weight: 700;
   }
-  .left { padding: 0 0 0 130px; }
-  .tag { font: 600 22px/1 'Inter', 'Hiragino Sans', sans-serif; letter-spacing: .18em; color: var(--muted); text-transform: uppercase; }
-  h1 { font: 700 92px/1.08 'Inter', 'Helvetica Neue', Arial, sans-serif; margin: 34px 0 14px; letter-spacing: -.01em; }
-  .en { font: 600 48px/1.2 'Inter', 'Helvetica Neue', Arial, sans-serif; color: var(--blue); letter-spacing: .01em; }
-  .lead { margin-top: 54px; font: 400 34px/1.5 'Inter', 'Helvetica Neue', Arial, sans-serif; }
-  .lead small { display: block; margin-top: 14px; font: 400 26px/1.6 'Hiragino Mincho ProN', 'Yu Mincho', serif; color: var(--muted); }
-  .right { position: relative; height: 960px; }
-  .frame { position: absolute; outline: 2px solid var(--blue); background: #fff; padding: 22px 24px; }
-  .frame .t {
-    writing-mode: vertical-rl; font-size: 30px; line-height: 1.95; letter-spacing: .06em;
-    height: 100%; text-orientation: mixed;
+  .label { position: absolute; left: 80px; top: 80px; width: 80px; height: 80px; background: var(--label);
+    display: grid; place-items: center; }
+  .title { position: absolute; left: 80px; top: 168px; font-size: 96px; line-height: 1.4; letter-spacing: -.01em; }
+  .sub { position: absolute; left: 80px; bottom: 80px; }
+  .sub .en { font-size: 34px; line-height: 1.4; letter-spacing: -.01em; }
+  .sub .ja { margin-top: 6px; font-size: 26px; line-height: 1.4; opacity: .72; }
+  .card { position: absolute; left: 1230px; top: 120px; width: 900px; height: 720px; background: var(--washi); }
+  .card .t {
+    position: absolute; left: 36px; top: 36px; height: 648px; display: inline-block;
+    writing-mode: vertical-rl; font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif; font-weight: 400;
+    font-size: 32px; line-height: 1.95; letter-spacing: .06em; color: var(--ink);
   }
-  .frame .t b { font-weight: 400; text-combine-upright: all; }
-  .h { position: absolute; width: 18px; height: 18px; background: #fff; border: 2px solid var(--blue); }
-  .badge { position: absolute; background: var(--blue); color: #fff; font: 600 20px/1 'Inter', sans-serif; padding: 8px 12px; border-radius: 4px; white-space: nowrap; }
-  .a { right: 650px; top: 150px; width: 250px; height: 700px; }
-  .b { right: 70px; top: 330px; width: 470px; height: 360px; }
-  .arrow { position: absolute; right: 560px; top: 465px; width: 70px; height: 90px; }
+  .frame { position: absolute; left: 1230px; top: 120px; width: 900px; height: 720px; outline: 2px solid var(--label); outline-offset: -2px; }
+  .h { position: absolute; width: 20px; height: 20px; background: var(--paper); border: 3px solid var(--label); }
+  .chip { position: absolute; left: 1230px; top: 120px; transform: translate(0, 100%); margin-top: 720px;
+    background: var(--label); color: var(--paper); font-size: 22px; line-height: 1; padding: 10px 14px; }
 </style>
 </head>
 <body>
-  <div class="left">
-    <div class="tag">Figma plugin</div>
-    <h1>Vertical<br>Japanese Text</h1>
-    <div class="en">Auto Reflow</div>
-    <p class="lead">Drag the height.<br>Vertical Japanese text reflows.
-      <small>縦書き自動折り返し</small></p>
+  <div class="label">
+    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#FCFAF2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="8 18 12 22 16 18"/><polyline points="8 6 12 2 16 6"/><line x1="12" x2="12" y1="2" y2="22"/>
+    </svg>
   </div>
-  <div class="right">
-    <div class="frame a">
-      <div class="t">吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。</div>
-      <i class="h" style="left:-10px;top:-10px"></i><i class="h" style="right:-10px;top:-10px"></i>
-      <i class="h" style="left:-10px;bottom:-10px"></i><i class="h" style="right:-10px;bottom:-10px"></i>
-      <span class="badge" style="left:50%;bottom:-48px;transform:translateX(-50%)">250 × 700 Hug</span>
-    </div>
-    <svg class="arrow" viewBox="0 0 120 90" fill="none" stroke="#7b756b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 45h96M80 20l26 25-26 25"/></svg>
-    <div class="frame b">
-      <div class="t">吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。</div>
-      <i class="h" style="left:-10px;top:-10px"></i><i class="h" style="right:-10px;top:-10px"></i>
-      <i class="h" style="left:-10px;bottom:-10px"></i><i class="h" style="right:-10px;bottom:-10px"></i>
-      <span class="badge" style="left:50%;bottom:-48px;transform:translateX(-50%)">470 × 360 Hug</span>
-    </div>
+  <div class="title">Vertical<br>Japanese Text</div>
+  <div class="sub">
+    <div class="en">Drag the height. Vertical Japanese text reflows.</div>
+    <div class="ja">縦書き自動折り返し</div>
   </div>
+
+  <div class="card"><div class="t">吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。</div></div>
+  <div class="frame"></div>
+  <i class="h" style="left:1220px;top:110px"></i>
+  <i class="h" style="left:1220px;top:830px"></i>
+  <div class="chip">Auto Reflow</div>
 </body>
 </html>
