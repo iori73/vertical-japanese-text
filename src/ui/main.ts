@@ -31,7 +31,7 @@ const T = {
   createBtn: ['作成', 'Create'],
   source: ['本文（段落は空行で区切る）', 'Text (separate paragraphs with a blank line)'],
   size: ['文字サイズ', 'Font size'],
-  advance: ['字送り', 'Advance'],
+  advance: ['字送り', 'Character pitch'],
   pitch: ['行送り（列の幅）', 'Column pitch'],
   numerals: ['数字', 'Numerals'],
   latin: ['英字', 'Latin'],
@@ -79,6 +79,9 @@ let watching = 0;
 let state: SelectionState = { kind: 'none' };
 let builtFor = '';
 
+// Show at most two decimals (values like 50.3999986 come from float math).
+const num2 = (n: number): number => Math.round(n * 100) / 100;
+
 function esc(s: string): string {
   return s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
 }
@@ -125,9 +128,9 @@ function blockCard(i: BlockInfo): string {
     <div class="card">
       <p class="stats" id="stats"></p>
       <div class="row">
-        <div class="field"><label class="t">${t('size')}</label><input type="number" id="fontSize" min="1" step="0.5" value="${i.fontSize}"></div>
-        <div class="field"><label class="t">${t('advance')}</label><input type="number" id="advance" min="1" step="0.1" value="${i.advance}"></div>
-        <div class="field"><label class="t">${t('pitch')}</label><input type="number" id="pitch" min="1" step="0.1" value="${i.pitch}"></div>
+        <div class="field"><label class="t">${t('size')}</label><input type="number" id="fontSize" min="1" step="0.5" value="${num2(i.fontSize)}"></div>
+        <div class="field"><label class="t">${t('advance')}</label><input type="number" id="advance" min="1" step="0.1" value="${num2(i.advance)}"></div>
+        <div class="field"><label class="t">${t('pitch')}</label><input type="number" id="pitch" min="1" step="0.1" value="${num2(i.pitch)}"></div>
         <div class="field"><label class="t">${t('fontNote')}</label><input type="text" disabled value="${esc(i.fontFamily)} ${esc(i.fontStyle)}" style="width:100%;font:inherit;padding:5px 6px;border:0;background:var(--figma-color-bg-secondary,#f5f5f5);color:inherit;border-radius:4px"></div>
         <div class="field full"><label class="t">${t('numerals')}</label><select id="numerals">${options(NUMERALS, s.numerals)}</select></div>
         <div class="field full"><label class="t">${t('latin')}</label><select id="latin">${options(LATIN, s.latin)}</select></div>
@@ -246,9 +249,9 @@ function render(): void {
     const stat = document.getElementById('stats');
     if (stat) stat.textContent = stats(info) + (auto ? '' : `  ·  ${t('autoOff')}`);
     set('source', info.paragraphs.join('\n\n'));
-    set('fontSize', String(info.fontSize));
-    set('advance', String(info.advance));
-    set('pitch', String(info.pitch));
+    set('fontSize', String(num2(info.fontSize)));
+    set('advance', String(num2(info.advance)));
+    set('pitch', String(num2(info.pitch)));
   }
 }
 
