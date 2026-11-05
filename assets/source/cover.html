@@ -4,53 +4,55 @@
 <meta charset="utf-8" />
 <title>Vertical Japanese Text cover</title>
 <!--
-  Layout follows the note thumbnail system (ai-ops: reference/wa-colors/thumbnail-pattern-library-v4.md), type T-08:
-  margin 80, category label 80x80 at (80,80), title at (80,168), title style = bold / line-height 140% / letter-spacing -1%.
-  Category: design (ink #491022, text #FCFAF2, label #8F2E14). Surface on the dark ground is washi #E7DDC6.
-  Canvas is 1920x960 because Figma Community covers are 2:1.
+  Classic direction (2026-11-05): after a Japanese ruled notebook (立罫ノート).
+  ground = chalkboard green #1F3A34, paper = off-white #E6E7DC, spine ink = #1D2226, rule blue = #8CC8DF (used thinly).
+  Canvas 1920x960 (Figma Community cover, 2:1). Margin 80.
 -->
 <style>
-  :root { --ink:#491022; --paper:#FCFAF2; --label:#8F2E14; --washi:#E7DDC6; }
+  :root { --green:#1F3A34; --paper:#E6E7DC; --ink:#1D2226; --rule:#8CC8DF; --line:#9AA79C; }
   * { box-sizing: border-box; margin: 0; }
   html, body { width: 1920px; height: 960px; }
-  body {
-    position: relative; overflow: hidden; background: var(--ink); color: var(--paper);
-    font-family: 'YuGothic', 'Yu Gothic', 'Hiragino Sans', sans-serif; font-weight: 700;
-  }
-  .label { position: absolute; left: 80px; top: 80px; width: 80px; height: 80px; background: var(--label);
-    display: grid; place-items: center; }
-  .title { position: absolute; left: 80px; top: 168px; font-size: 96px; line-height: 1.4; letter-spacing: -.01em; }
+  body { position: relative; overflow: hidden; background: var(--green); color: var(--paper);
+    font-family: 'Baskerville', 'Iowan Old Style', 'Hiragino Mincho ProN', 'Yu Mincho', serif; }
+  .tag { position: absolute; left: 80px; top: 80px; font-size: 22px; letter-spacing: .28em; text-transform: uppercase; opacity: .75; }
+  .title { position: absolute; left: 80px; top: 150px; font-size: 118px; line-height: 1.12; font-weight: 400; letter-spacing: -.01em; }
   .sub { position: absolute; left: 80px; bottom: 80px; }
-  .sub .en { font-size: 34px; line-height: 1.4; letter-spacing: -.01em; }
-  .sub .ja { margin-top: 6px; font-size: 26px; line-height: 1.4; opacity: .72; }
-  .card { position: absolute; left: 1230px; top: 120px; width: 900px; height: 720px; background: var(--washi); }
-  .card .t {
-    position: absolute; left: 36px; top: 36px; height: 648px; display: inline-block;
-    writing-mode: vertical-rl; font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif; font-weight: 400;
-    font-size: 32px; line-height: 1.95; letter-spacing: .06em; color: var(--ink);
-  }
-  .frame { position: absolute; left: 1230px; top: 120px; width: 900px; height: 720px; outline: 2px solid var(--label); outline-offset: -2px; }
-  .h { position: absolute; width: 20px; height: 20px; background: var(--paper); border: 3px solid var(--label); }
-  .chip { position: absolute; left: 1230px; top: 120px; transform: translate(0, 100%); margin-top: 720px;
-    background: var(--label); color: var(--paper); font-size: 22px; line-height: 1; padding: 10px 14px; }
+  .sub .en { font-size: 36px; line-height: 1.4; }
+  .sub .ja { margin-top: 10px; font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif; font-size: 28px; opacity: .78; letter-spacing: .12em; }
+  .rule { position: absolute; left: 80px; top: 132px; width: 240px; height: 2px; background: var(--rule); }
+
+  /* the notebook cover */
+  .book { position: absolute; left: 1100px; top: 90px; width: 700px; height: 780px; background: var(--paper); }
+  .spine { position: absolute; right: 0; top: 0; bottom: 0; width: 70px; background: var(--ink); }
+  .frame { position: absolute; left: 46px; top: 46px; width: 520px; height: 688px; border: 2px solid var(--line); }
+  .frame::after { content: ''; position: absolute; inset: 6px; border: 1px solid var(--line); }
+  .ruled { position: absolute; left: 76px; top: 86px; width: 480px; height: 608px;
+    background: repeating-linear-gradient(to left, transparent 0, transparent 47px, var(--line) 47px, var(--line) 48px);
+    border-left: 1px solid var(--line); }
+  .ruled .t { position: absolute; right: 0; top: 14px; height: 580px; writing-mode: vertical-rl;
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif; font-size: 27px; line-height: 48px; letter-spacing: .1em; color: var(--ink); }
+  .sel { position: absolute; left: 70px; top: 80px; width: 492px; height: 620px; outline: 2px solid var(--rule); outline-offset: 0; }
+  .h { position: absolute; width: 16px; height: 16px; background: var(--paper); border: 2px solid var(--rule); }
+  .chip { position: absolute; left: 70px; top: 712px; background: var(--rule); color: var(--ink); font-family: 'Helvetica Neue', sans-serif; font-weight: 600; font-size: 20px; line-height: 1; padding: 9px 12px; }
 </style>
 </head>
 <body>
-  <div class="label">
-    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#FCFAF2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="8 18 12 22 16 18"/><polyline points="8 6 12 2 16 6"/><line x1="12" x2="12" y1="2" y2="22"/>
-    </svg>
-  </div>
+  <div class="tag">Figma plugin</div>
+  <div class="rule"></div>
   <div class="title">Vertical<br>Japanese Text</div>
   <div class="sub">
     <div class="en">Drag the height. Vertical Japanese text reflows.</div>
     <div class="ja">縦書き自動折り返し</div>
   </div>
 
-  <div class="card"><div class="t">吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。</div></div>
-  <div class="frame"></div>
-  <i class="h" style="left:1220px;top:110px"></i>
-  <i class="h" style="left:1220px;top:830px"></i>
-  <div class="chip">Auto Reflow</div>
+  <div class="book">
+    <div class="frame"></div>
+    <div class="ruled"><div class="t">吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。</div></div>
+    <div class="sel"></div>
+    <i class="h" style="left:62px;top:72px"></i><i class="h" style="left:554px;top:72px"></i>
+    <i class="h" style="left:62px;top:692px"></i><i class="h" style="left:554px;top:692px"></i>
+    <div class="chip">480 × 608 Hug</div>
+    <div class="spine"></div>
+  </div>
 </body>
 </html>
