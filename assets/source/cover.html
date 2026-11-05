@@ -1,56 +1,17 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<title>Vertical Japanese Text cover</title>
-<!--
-  Layout follows the note thumbnail system (ai-ops: reference/wa-colors/thumbnail-pattern-library-v4.md), type T-08:
-  margin 80, category label 80x80 at (80,80), title at (80,168), title style = bold / line-height 140% / letter-spacing -1%.
-  Category: design (ink #491022, text #FCFAF2, label #8F2E14). Surface on the dark ground is washi #E7DDC6.
-  Canvas is 1920x960 because Figma Community covers are 2:1.
--->
-<style>
-  :root { --ink:#491022; --paper:#FCFAF2; --label:#8F2E14; --washi:#E7DDC6; }
-  * { box-sizing: border-box; margin: 0; }
-  html, body { width: 1920px; height: 960px; }
-  body {
-    position: relative; overflow: hidden; background: var(--ink); color: var(--paper);
-    font-family: 'YuGothic', 'Yu Gothic', 'Hiragino Sans', sans-serif; font-weight: 700;
-  }
-  .label { position: absolute; left: 80px; top: 80px; width: 80px; height: 80px; background: var(--label);
-    display: grid; place-items: center; }
-  .title { position: absolute; left: 80px; top: 168px; font-size: 96px; line-height: 1.4; letter-spacing: -.01em; }
-  .sub { position: absolute; left: 80px; bottom: 80px; }
-  .sub .en { font-size: 34px; line-height: 1.4; letter-spacing: -.01em; }
-  .sub .ja { margin-top: 6px; font-size: 26px; line-height: 1.4; opacity: .72; }
-  .card { position: absolute; left: 1230px; top: 120px; width: 900px; height: 720px; background: var(--washi); }
-  .card .t {
-    position: absolute; left: 36px; top: 36px; height: 648px; display: inline-block;
-    writing-mode: vertical-rl; font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif; font-weight: 400;
-    font-size: 32px; line-height: 1.95; letter-spacing: .06em; color: var(--ink);
-  }
-  .frame { position: absolute; left: 1230px; top: 120px; width: 900px; height: 720px; outline: 2px solid var(--label); outline-offset: -2px; }
-  .h { position: absolute; width: 20px; height: 20px; background: var(--paper); border: 3px solid var(--label); }
-  .chip { position: absolute; left: 1230px; top: 120px; transform: translate(0, 100%); margin-top: 720px;
-    background: var(--label); color: var(--paper); font-size: 22px; line-height: 1; padding: 10px 14px; }
-</style>
-</head>
-<body>
-  <div class="label">
-    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#FCFAF2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="8 18 12 22 16 18"/><polyline points="8 6 12 2 16 6"/><line x1="12" x2="12" y1="2" y2="22"/>
-    </svg>
-  </div>
-  <div class="title">Vertical<br>Japanese Text</div>
-  <div class="sub">
-    <div class="en">Drag the height. Vertical Japanese text reflows.</div>
-    <div class="ja">縦書き自動折り返し</div>
-  </div>
-
-  <div class="card"><div class="t">吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。</div></div>
-  <div class="frame"></div>
-  <i class="h" style="left:1220px;top:110px"></i>
-  <i class="h" style="left:1220px;top:830px"></i>
-  <div class="chip">Auto Reflow</div>
-</body>
-</html>
+<html lang="en"><head><meta charset="utf-8" /><title>cover en 1920x960</title>
+<link rel="stylesheet" href="_note.css" />
+<style>html, body { width: 1920px; height: 960px; } .art { height: 640px; transform: scale(1.5); }</style></head>
+<body><div class="art">
+<div class="tags"><span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="#E6E7DC" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"/></svg>Figma plugin</span><span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="#E6E7DC" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" x2="15" y1="20" y2="20"/><line x1="12" x2="12" y1="4" y2="20"/></svg>Typography</span></div>
+<div class="title" style="font-size:72px">Vertical<br>Japanese Text</div>
+<div class="subt" style="top:306px">Drag the height.<br>Vertical Japanese text reflows.</div>
+<div class="mat" style="top:67px"><div class="stage" style="width:320px;height:500px;transform:translate(-50%,-50%) scale(0.9000)"><div class="paper" style="position:absolute;left:0;top:0;width:320px;height:470px">
+  <div style="position:absolute;left:18px;top:18px;right:18px;bottom:18px;border:2px solid #9AA79C"></div>
+  <div style="position:absolute;left:24px;top:24px;right:24px;bottom:24px;border:1px solid #9AA79C"></div>
+  <div class="t rl" style="position:absolute;left:44px;top:48px;width:240px;height:374px;font-size:24px;line-height:50px;display:block">
+     <div style="position:absolute;right:0;top:10px;height:350px">吾輩は猫である。名前はまだ無い。どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所で</div></div>
+  <div style="position:absolute;left:38px;top:42px;width:252px;height:388px;outline:2px solid #8CC8DF"></div>
+  <i class="h" style="left:29px;top:33px"></i><i class="h" style="left:281px;top:33px"></i><i class="h" style="left:29px;top:421px"></i><i class="h" style="left:281px;top:421px"></i>
+</div><span class="chip" style="left:0;top:482px">252 × 388 Hug</span></div></div>
+</div></body></html>
