@@ -20,7 +20,7 @@
 | 用途 | ファイル | サイズ | 状態 |
 |---|---|---|---|
 | プラグインアイコン | `assets/publish/icon-128.png`（元: `assets/source/icon.html`） | 128 × 128 | ✅ |
-| カバーアート | `assets/publish/cover.png`（元: `assets/source/cover.html`） | 1920 × 960 | ✅（黒板緑・紙色・縦罫の古風な方向。CSS で描いた説明図） |
+| カバーアート | `assets/publish/cover.png`（元: `assets/source/cover.html`） | 1920 × 960 | ✅（黒板緑・紙色の古風な方向。右の台座は、デモ動画の実画面 2 コマ：`assets/source/video-block-tall.png` と `video-block-wide.png`） |
 | カルーセル 1〜3 | `assets/publish/carousel1〜3.png`（日本語版は `assets/publish-ja/`） | 1920 × 960 | ✅（HTML で描いた説明図） |
 
 作り直す場合は `assets/source/*.html` をブラウザで開き、ビューポートを 1920×960（アイコンは 128×128）にしてスクリーンショットを撮ります。
