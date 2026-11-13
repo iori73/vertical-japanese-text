@@ -19,15 +19,15 @@
 
 | 用途 | ファイル | サイズ | 状態 |
 |---|---|---|---|
-| プラグインアイコン | `assets/publish/icon-128.png`（元: `assets/source/icon.html`） | 128 × 128 | ✅ |
-| カバーアート | `assets/publish/cover.png`（元: `assets/source/cover.html`） | 1920 × 960 | ✅（黒板緑・紙色・縦罫の古風な方向。CSS で描いた説明図） |
+| プラグインアイコン | `assets/publish/icon-128.png`（元: Figma（Plugins ファイル、ノード `43:53`）） | 128 × 128 | ✅ |
+| カバーアート | `assets/publish/cover.png`（元: Figma（Plugins ファイル、ノード `61:299`）） | 1920 × 960 | ✅（黒板緑・紙色・縦罫の古風な方向。CSS で描いた説明図） |
 | カルーセル 1〜3 | `assets/publish/carousel1〜3.png`（日本語版は `assets/publish-ja/`） | 1920 × 960 | ✅（HTML で描いた説明図） |
 
-作り直す場合は `assets/source/*.html` をブラウザで開き、ビューポートを 1920×960（アイコンは 128×128）にしてスクリーンショットを撮ります。
+作り直す場合は `assets/README.md` の Figma ノードを開き、ビューポートを 1920×960（アイコンは 128×128）にしてスクリーンショットを撮ります。
 
 ## 3. カルーセル（HTML で描いた説明図）
 
-`assets/publish/carousel1〜3.png`（英語）と `assets/publish-ja/carousel1〜3-ja.png`（日本語）を用意済み。元は `assets/source/` の同名の `.html`（共通 CSS は `_carousel.css`）。カバーと同じ配色（黒板緑・紙色・縦罫の古風な方向）で描いている。サンプル文は夏目漱石『吾輩は猫である』（著作権切れ）。
+`assets/publish/carousel1〜3.png`（英語）と `assets/publish-ja/carousel1〜3-ja.png`（日本語）を用意済み。元は Figma（`assets/README.md` にノードの一覧）。カバーと同じ配色（黒板緑・紙色・縦罫の古風な方向）で描いている。サンプル文は夏目漱石『吾輩は猫である』（著作権切れ）。
 
 | # | 内容 |
 |---|---|
