@@ -19,7 +19,9 @@ Built with the Thumbnail v3 components; the layout comes from the past example (
 | cover EN / JA (1280×670) | `59:166` / `59:288` |
 | carousel 1〜3, EN (1280×670) | `60:179`, `60:373`, `60:529` |
 | carousel 1〜3, JA (1280×670) | `60:276`, `60:451`, `60:599` |
-| Community 1920×960 (cover, carousel1 EN/JA, carousel2 EN/JA, carousel3 EN/JA) | `61:299`, `61:329`, `61:385`, `61:441`, `61:478`, `61:515`, `61:544` |
+| Community cover 1920×960（採用 / chosen, 2026-11-14） | `77:1402` |
+| Community 1920×960 (old cover, carousel1 EN/JA, carousel2 EN/JA, carousel3 EN/JA) | `61:299`, `61:329`, `61:385`, `61:441`, `61:478`, `61:515`, `61:544` |
+| logo ideas L1〜L3 (640×640) | `85:314`, `85:323`, `85:338` |
 | icon (idea B) | `43:53` |
 
 URL: `https://www.figma.com/design/26IH26Fh9F58EVqcPdyazI/Plugins?node-id=<node id with - instead of :>`
@@ -35,6 +37,10 @@ Export the 1280x670 frames as they are. For the 1920x960 Community images, a cop
 見出し・サブタイトル: Noto Sans JP Medium（72px／80px、字間 −4%）。タグ: Space Mono Regular 32px。縦書きの例文: Noto Serif JP。<br>
 Title and subtitle: Noto Sans JP Medium. Tags: Space Mono Regular 32px. Vertical sample text: Noto Serif JP.
 
-## カバーの実画面 / Real screens on the cover
+## Community のカバー / Community cover
+`publish/cover.png` は `77:1402` の書き出し。同じブロックの 4 つの状態（高さ 560 → 466 → 405 → 347）を、右上の角をそろえて重ね（奥ほど薄く）、目盛りつきの縦横の矢印で「高さが縮み、幅が伸びる」を示す。フレームには外側に 8px の線があるので、1936×976 で書き出して周りを 8px 切る。<br>
+`publish/cover.png` is exported from `77:1402`: four states of the same block (height 560 → 466 → 405 → 347) stacked on a shared top-right corner, older ones paler, with ticked height/width arrows. The frame has an 8px outside stroke, so export at 1936x976 and crop 8px from each side.
+
+## 前のカバーの実画面 / Real screens on the earlier covers
 カバー（`59:166`・`59:288`・`61:299`）の台座には、デモ動画（`publish/Vertical Japanese Text demo - EN panel.mp4`）から切り出した実画面を 2 つ置いている（レイヤー `picture: video frames`）。同じブロックの、3.2 秒（252 × 560、5 列）と 11.6 秒（453.6 × 347、9 列）。カーソルが写らないコマを選び、キャンバス外の薄い灰色は白にそろえた。切り出した画像は `source/video-block-tall.png`・`source/video-block-wide.png`。前の絵（`picture: notebook`）は非表示で残している。動画を撮り直したら、同じ時刻で切り出し直す。<br>
 The mat on the covers holds two real screens cut from the demo video (layer `picture: video frames`): the same block at 3.2 s (252 x 560, 5 columns) and 11.6 s (453.6 x 347, 9 columns), picked where the cursor is out of the way, with the light grey outside the canvas turned white. The crops are `source/video-block-tall.png` and `source/video-block-wide.png`. The previous drawing (`picture: notebook`) is kept, hidden. Re-cut at the same times if the video is re-recorded.
