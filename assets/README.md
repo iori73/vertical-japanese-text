@@ -21,8 +21,9 @@ Built with the Thumbnail v3 components; the layout comes from the past example (
 | carousel 1〜3, JA (1280×670) | `60:276`, `60:451`, `60:599` |
 | Community cover 1920×960（採用 / chosen, 2026-11-14） | `77:1402` |
 | Community 1920×960 (old cover, carousel1 EN/JA, carousel2 EN/JA, carousel3 EN/JA) | `61:299`, `61:329`, `61:385`, `61:441`, `61:478`, `61:515`, `61:544` |
-| logo ideas L1〜L3 (640×640) | `85:314`, `85:323`, `85:338` |
-| icon (idea B) | `43:53` |
+| logo ideas L2, L3 (640×640, not used) | `85:323`, `85:338` |
+| icon（採用 / chosen: logo L1 — stacked cards, 2026-11-14） | `85:314` |
+| icon (old, idea B) | `43:53` |
 
 URL: `https://www.figma.com/design/26IH26Fh9F58EVqcPdyazI/Plugins?node-id=<node id with - instead of :>`
 

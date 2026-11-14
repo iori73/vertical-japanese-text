@@ -19,7 +19,7 @@
 
 | 用途 | ファイル | サイズ | 状態 |
 |---|---|---|---|
-| プラグインアイコン | `assets/publish/icon-128.png`（元: Figma（Plugins ファイル、ノード `43:53`）） | 128 × 128 | ✅ |
+| プラグインアイコン | `assets/publish/icon-128.png`（元: Figma（Plugins ファイル、ノード `85:314`、ロゴ L1：カードの 3 段重ね）） | 128 × 128 | ✅ |
 | カバーアート | `assets/publish/cover.png`（元: Figma（Plugins ファイル、ノード `77:1402`）） | 1920 × 960 | ✅（黒板緑・紙色。同じブロックの 4 状態を右上の角で重ね、目盛りつきの縦横の矢印を添える） |
 | カルーセル 1〜3 | `assets/publish/carousel1〜3.png`（日本語版は `assets/publish-ja/`） | 1920 × 960 | ✅（HTML で描いた説明図） |
 
