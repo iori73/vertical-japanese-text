@@ -16,7 +16,8 @@ Built with the Thumbnail v3 components; the layout comes from the past example (
 
 | 画像 / Image | ノード / Node |
 |---|---|
-| cover EN / JA (1280×670) | `59:166` / `59:288` |
+| note / Substack cover EN / JA (1280×670, `note/`) | `87:314` / `87:415`（77:1402 と同じ絵 / same picture as 77:1402） |
+| cover EN / JA (1280×670, old) | `59:166` / `59:288` |
 | carousel 1〜3, EN (1280×670) | `60:179`, `60:373`, `60:529` |
 | carousel 1〜3, JA (1280×670) | `60:276`, `60:451`, `60:599` |
 | Community cover 1920×960（採用 / chosen, 2026-11-14） | `77:1402` |

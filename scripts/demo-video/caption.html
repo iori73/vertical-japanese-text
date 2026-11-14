@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8" />
+<title>demo video caption</title>
+<!-- One caption card for the demo video. Open as caption.html?lang=en&i=0 (lang = en | ja, i = index in captions.json).
+     Rendered at 3466x1710 (the recording size) with a transparent background, then overlaid by make-video.sh.
+     Fonts match the Figma Thumbnail v3 parts: Noto Sans JP Medium (text) and Space Mono (tag, step). -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&family=Space+Mono&display=block" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  html { zoom: 2; }
+  html, body { width: 1733px; height: 855px; background: transparent; }
+  body { position: relative; color: #E6E7DC; font-family: 'Noto Sans JP', sans-serif; font-weight: 500; }
+  /* chalkboard green #1F3A34, paper #E6E7DC, rule blue #8CC8DF */
+  .box { position: absolute; left: 585px; bottom: 54px; width: 1040px; background: rgba(31, 58, 52, .96); border-top: 2px solid #8CC8DF; padding: 24px 40px 30px; }
+  .top { display: flex; align-items: baseline; gap: 18px; }
+  .chip { font-family: 'Space Mono', monospace; font-weight: 400; font-size: 16px; letter-spacing: .08em; text-transform: uppercase; opacity: .75; }
+  .name { font-size: 30px; line-height: 1.2; letter-spacing: -.02em; }
+  .step { margin-left: auto; font-family: 'Space Mono', monospace; font-weight: 400; font-size: 18px; opacity: .7; }
+  .en { margin-top: 14px; font-size: 40px; line-height: 1.3; letter-spacing: -.02em; }
+  .ja { margin-top: 8px; font-size: 24px; line-height: 1.45; opacity: .8; }
+</style></head>
+<body>
+<div class="box">
+  <div class="top"><span class="chip">Figma plugin</span><span class="name">Vertical Japanese Text</span><span class="step" id="step"></span></div>
+  <div class="en" id="en"></div>
+  <div class="ja" id="ja"></div>
+</div>
+<script>
+  (async () => {
+    const q = new URLSearchParams(location.search);
+    const lang = q.get('lang') || 'en', i = Number(q.get('i') || 0);
+    const data = await (await fetch('captions.json')).json();
+    const set = data[lang], c = set.captions[i];
+    document.getElementById('en').textContent = c.en;
+    document.getElementById('ja').textContent = c.ja;
+    document.getElementById('step').textContent = c.step ? `${c.step} / ${set.steps}` : '';
+    await document.fonts.ready;
+    document.body.dataset.ready = '1';
+  })();
+</script>
+</body></html>
