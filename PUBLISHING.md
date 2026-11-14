@@ -19,8 +19,8 @@
 
 | 用途 | ファイル | サイズ | 状態 |
 |---|---|---|---|
-| プラグインアイコン | `assets/publish/icon-128.png`（元: Figma（Plugins ファイル、ノード `85:314`、ロゴ L1：カードの 3 段重ね）） | 128 × 128 | ✅ |
-| カバーアート | `assets/publish/cover.png`（元: Figma（Plugins ファイル、ノード `77:1402`）） | 1920 × 960 | ✅（黒板緑・紙色。同じブロックの 4 状態を右上の角で重ね、目盛りつきの縦横の矢印を添える） |
+| プラグインアイコン | `assets/publish/icon-128.png`（元: Figma（Thumbnail/Icon ファイル、ノード `1384:5976`、ロゴ L1：カードの 3 段重ね）） | 128 × 128 | ✅ |
+| カバーアート | `assets/publish/cover.png`（元: Figma（Thumbnail/Icon ファイル、ノード `1384:5877`）） | 1920 × 960 | ✅（黒板緑・紙色。同じブロックの 4 状態を右上の角で重ね、目盛りつきの縦横の矢印を添える） |
 | カルーセル 1〜3 | `assets/publish/carousel1〜3.png`（日本語版は `assets/publish-ja/`） | 1920 × 960 | ✅（Figma の部品で作った説明図） |
 | デモ動画（カルーセルに入れる） | `assets/publish/Vertical Japanese Text demo - EN panel (30s).mp4`（git には入れない。作り方は `scripts/demo-video/`） | **30 秒まで** | ✅（29.5 秒。カルーセルは画像と動画で最大 9 つ） |
 
