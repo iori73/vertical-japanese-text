@@ -18,11 +18,11 @@ Same as the Figma Thumbnail v3 parts: Noto Sans JP Medium for text, Space Mono f
    Serve this folder (e.g. `python3 -m http.server 8765`); `caption.html` fetches `captions.json`, so `file://` does not work.
 2. ブラウザで 3466×1710 のビューポートにして、各キャプションを背景を透明にして撮る（Playwright なら `page.screenshot({ omitBackground: true })`）。英語は 7 枚、日本語は 5 枚。`out/captions/en/cap1.png …` のように保存する。<br>
    Render each card at a 3466x1710 viewport with a transparent background (Playwright: `omitBackground: true`): 7 for EN, 5 for JA, saved as `out/captions/en/cap1.png …`.
-3. 重ねる。<br>
-   Overlay:
+3. 重ねる。Figma Community の動画は **30 秒まで**なので、4 つ目の引数に `29.5` を渡して、長い分は全体を速めて収める（英語版は約 1.44 倍、日本語版は約 1.09 倍）。<br>
+   Overlay. Figma Community accepts videos **up to 30 s**, so pass `29.5` as the 4th argument; a longer result is sped up to fit (EN about 1.44x, JA about 1.09x).
    ```
-   python3 scripts/demo-video/make-video.py en out/captions/en "out/Vertical Japanese Text demo - EN panel.mp4"
-   python3 scripts/demo-video/make-video.py ja out/captions/ja "out/Vertical Japanese Text demo - JA panel.mp4"
+   python3 scripts/demo-video/make-video.py en out/captions/en "out/Vertical Japanese Text demo - EN panel (30s).mp4" 29.5
+   python3 scripts/demo-video/make-video.py ja out/captions/ja "out/Vertical Japanese Text demo - JA panel (30s).mp4" 29.5
    ```
 4. できた動画を `assets/publish/` に置く（git には入れない）。<br>
    Put the videos in `assets/publish/` (not tracked by git).

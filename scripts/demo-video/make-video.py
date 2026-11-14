@@ -1,9 +1,11 @@
 """Overlay the caption cards on a demo recording (the recording itself is not changed).
 
-usage: python3 make-video.py <en|ja> <captions dir> <output.mp4>
+usage: python3 make-video.py <en|ja> <captions dir> <output.mp4> [max seconds]
 
 <captions dir> holds cap1.png, cap2.png, ... rendered from caption.html (3466x1710, transparent).
 Timings, texts and the source recording come from captions.json next to this file.
+[max seconds]: if the result would be longer, the whole video (captions included) is played
+faster so it fits. Figma Community accepts videos up to 30 s, so use 29.5 there.
 """
 import json
 import os
@@ -11,6 +13,7 @@ import subprocess
 import sys
 
 lang, cap_dir, out = sys.argv[1], sys.argv[2], sys.argv[3]
+max_len = float(sys.argv[4]) if len(sys.argv) > 4 else None
 here = os.path.dirname(os.path.abspath(__file__))
 spec = json.load(open(os.path.join(here, 'captions.json')))[lang]
 src = os.path.expanduser(spec['source'])
@@ -28,7 +31,15 @@ prev = '0:v'
 for n in range(1, len(caps) + 1):
     chain.append(f'[{prev}][c{n}]overlay=0:0:eof_action=pass[v{n}]')
     prev = f'v{n}'
-filt = ';'.join(parts + chain) + f';[{prev}]format=yuv420p[v]'
+speed = ''
+if max_len:
+    dur = float(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', src],
+                               capture_output=True, text=True).stdout.strip())
+    if dur > max_len:
+        factor = dur / max_len
+        speed = f'setpts=PTS/{factor:.5f},'
+        print(f'source {dur:.2f} s -> {max_len} s (x{factor:.3f})')
+filt = ';'.join(parts + chain) + f';[{prev}]{speed}format=yuv420p[v]'
 cmd += ['-filter_complex', filt, '-map', '[v]', '-an', '-c:v', 'libx264', '-crf', '20',
         '-preset', 'medium', '-r', '60', '-movflags', '+faststart', out]
 r = subprocess.run(cmd, capture_output=True, text=True)
