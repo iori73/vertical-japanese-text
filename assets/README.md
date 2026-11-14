@@ -14,16 +14,26 @@ The source of these images is in Figma (file "Plugins"). The PNGs here are expor
 過去のサムネの部品（`Thumbnail v3/…`）を使って作っている。型の元は過去の例（ノード `45:4190`）。<br>
 Built with the Thumbnail v3 components; the layout comes from the past example (node `45:4190`).
 
+ページ「Vertical Japanese Text」の 94:2037 の中を、3 つのセクションに分けている（2026-11-14）。「公開版」`77:982`（いま使っている素材）/「制作素材」`96:343`（デモ動画を録画したシーンと台本）/「アーカイブ」`96:336`（公開版に使わなかったもの。A1〜A6 に分類。何も消していない）。<br>
+The page section 94:2037 holds three sections: Published `77:982`, Production `96:343` (scenes and script for the demo recording), Archive `96:336` (everything not used, grouped A1–A6; nothing deleted).
+
+**公開版 / Published（`77:982`）**
+
 | 画像 / Image | ノード / Node |
 |---|---|
-| note / Substack cover EN / JA (1280×670, `note/`) | `87:314` / `87:415`（77:1402 と同じ絵 / same picture as 77:1402） |
+| Community cover 1920×960 → `publish/cover.png` | `77:1402` |
+| icon（logo L1 — stacked cards）→ `publish/icon-128.png` | `85:314` |
+| carousel 1〜3 1920×960, EN / JA | `90:339`, `90:415`, `90:472` / `90:521`, `90:597`, `90:654` |
+| note / Substack cover EN / JA (1280×670) → `note/` | `87:314` / `87:415` |
+
+**アーカイブ / Archive（`96:336`）にあるもの（以前の版）**
+
+| 画像 / Image | ノード / Node |
+|---|---|
 | cover EN / JA (1280×670, old) | `59:166` / `59:288` |
-| carousel 1〜3, EN (1280×670) | `60:179`, `60:373`, `60:529` |
-| carousel 1〜3, JA (1280×670) | `60:276`, `60:451`, `60:599` |
-| Community cover 1920×960（採用 / chosen, 2026-11-14） | `77:1402` |
-| Community 1920×960 (old cover, carousel1 EN/JA, carousel2 EN/JA, carousel3 EN/JA) | `61:299`, `61:329`, `61:385`, `61:441`, `61:478`, `61:515`, `61:544` |
-| logo ideas L2, L3 (640×640, not used) | `85:323`, `85:338` |
-| icon（採用 / chosen: logo L1 — stacked cards, 2026-11-14） | `85:314` |
+| carousel 1〜3, EN / JA (1280×670) | `60:179`, `60:373`, `60:529` / `60:276`, `60:451`, `60:599` |
+| Community 1920×960 (old cover, carousel1〜3 EN/JA。公開版のカルーセルはこれの複製) | `61:299`, `61:329`, `61:385`, `61:441`, `61:478`, `61:515`, `61:544` |
+| logo ideas L2, L3 (not used) | `85:323`, `85:338` |
 | icon (old, idea B) | `43:53` |
 
 URL: `https://www.figma.com/design/26IH26Fh9F58EVqcPdyazI/Plugins?node-id=<node id with - instead of :>`
