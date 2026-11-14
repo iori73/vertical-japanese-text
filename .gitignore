@@ -5,3 +5,5 @@ ui.html
 harness.bundle.js
 assets/publish/*.mp4
 .claude/
+out/
+.playwright-mcp/

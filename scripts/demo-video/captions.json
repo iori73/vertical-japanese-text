@@ -1,0 +1,28 @@
+{
+  "en": {
+    "source": "~/Desktop/2230trimmed.mov",
+    "output": "Vertical Japanese Text demo - EN panel.mp4",
+    "steps": 6,
+    "captions": [
+      { "start": 0.4, "end": 3.4, "step": 1, "en": "Select the text. Press “Make vertical block”.", "ja": "テキストを選んで「縦書きブロックにする」を押す" },
+      { "start": 3.6, "end": 14.9, "step": 2, "en": "Drag the height. The columns reflow.", "ja": "高さを引くと、列が折り返す。幅は追従し、右端は動かない" },
+      { "start": 15.2, "end": 23.9, "step": 3, "en": "Digits and Latin letters reflow the same way.", "ja": "数字や英字の入った文も、同じように折り返す" },
+      { "start": 24.2, "end": 27.9, "step": 4, "en": "Change the spacing in the panel.", "ja": "文字の間隔は、パネルで変えられる" },
+      { "start": 28.2, "end": 36.5, "step": 5, "en": "Choose how digits, letters and punctuation are set.", "ja": "数字・英字・句読点の組み方を選ぶ" },
+      { "start": 36.8, "end": 39.6, "step": 6, "en": "Punctuation rules are one checkbox each.", "ja": "句読点のルールは、チェックひとつで切り替え" },
+      { "start": 39.9, "end": 42.4, "step": null, "en": "Drag the height. Vertical Japanese text reflows.", "ja": "縦書き自動折り返し" }
+    ]
+  },
+  "ja": {
+    "source": "~/Desktop/Screen Recording 2026-11-04 at 22.08.35.mov",
+    "output": "Vertical Japanese Text demo - JA panel.mp4",
+    "steps": 4,
+    "captions": [
+      { "start": 0.4, "end": 4.9, "step": 1, "en": "Select the text. Press “Make vertical block”.", "ja": "テキストを選んで「縦書きブロックにする」を押す" },
+      { "start": 5.2, "end": 12.9, "step": 2, "en": "Drag the height. The columns reflow.", "ja": "高さを引くと、列が折り返す。幅は追従し、右端は動かない" },
+      { "start": 13.2, "end": 17.9, "step": 3, "en": "Choose how digits, letters and punctuation are set.", "ja": "数字・英字・句読点の組み方を、パネルで選ぶ" },
+      { "start": 18.2, "end": 24.9, "step": 4, "en": "Digits and Latin letters reflow the same way.", "ja": "数字や英字の入った文も、同じように折り返す" },
+      { "start": 25.2, "end": 31.7, "step": null, "en": "Drag the height. Vertical Japanese text reflows.", "ja": "縦書き自動折り返し" }
+    ]
+  }
+}
